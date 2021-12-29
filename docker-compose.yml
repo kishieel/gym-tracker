@@ -1,0 +1,62 @@
+version: '3.0'
+
+networks:
+  gym_tracker_driver:
+
+volumes:
+  gym_tracker_mysql:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/etc/nginx/certs:/etc/nginx/certs
+      - ./.docker/etc/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - core
+      - mysql
+    networks:
+      - gym_tracker_driver
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;'
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - gym_tracker_mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: gym-tracker
+      MYSQL_USER: tracker
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    networks:
+      - gym_tracker_driver
+  core:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_ID: $USER_ID
+        GROUP_ID: $GROUP_ID
+    image: gym-tracker_core
+    container_name: core
+    environment:
+      DB_DATABASE: gym-tracker
+      DB_USERNAME: tracker
+      DB_PASSWORD: secret
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mysql
+    networks:
+      - gym_tracker_driver

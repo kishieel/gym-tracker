@@ -1,0 +1,8 @@
+*
+!/static
+!/static/**/*
+!.htaccess
+!index.php
+!robots.txt
+!storage
+!.gitignore
