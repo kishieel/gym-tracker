@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property string|null $workout_at
+ * @property \Illuminate\Support\Carbon|null $workout_at
  * @property-read \App\Models\Exercise $exercise
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Repetition newModelQuery()
@@ -47,6 +47,10 @@ class Repetition extends Model
     protected $fillable = [
         'quantity',
         'unit',
+    ];
+
+    protected $casts = [
+        'workout_at' => 'datetime',
     ];
 
     public function exercise(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -36,10 +36,7 @@
         }
     </style>
 
-    <!-- Scripts -->
     @yield('scripts')
-
-    <!-- Styles -->
     @yield('styles')
 </head>
 <body>

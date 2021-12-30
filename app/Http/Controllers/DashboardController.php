@@ -26,6 +26,7 @@ class DashboardController extends Controller
                     ->selectRaw('sum(repetitions.quantity) as summary')
                     ->selectRaw('max(repetitions.quantity) as record')
                     ->selectRaw('max(repetitions.workout_at) as last_workout_at')
+                    ->whereNull('repetitions.deleted_at')
                     ->groupBy('user_id', 'exercise_id')
                     ->orderByDesc(
                         Repetition::query()

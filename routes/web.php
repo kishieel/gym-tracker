@@ -29,8 +29,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('dashboard.exercises');
 
     Route::resource('/exercises', \App\Http\Controllers\ExerciseController::class)
-        ->only('show');
+        ->only('show', 'create', 'store', 'edit', 'update', 'destroy');
 
     Route::resource('/exercises/{exercise}/repetitions', \App\Http\Controllers\RepetitionController::class)
         ->only('create', 'store', 'edit', 'update', 'destroy');
+
+    Route::patch('/exercises/{exercise}/repetitions/{repetition}/restore', [\App\Http\Controllers\RepetitionController::class, 'restore'])
+        ->name('repetitions.restore');
 });

@@ -45,9 +45,13 @@
                         </table>
                     </div>
                     <div class="text-end">
-                        <a href="#" class="btn btn-outline-danger me-1 mb-2">Remove category</a>
-                        <a href="#" class="btn btn-outline-info me-1 mb-2">Show details</a>
+                        <form class="d-inline" action="{{ route('exercises.destroy', ['exercise' => $exercise->id]) }}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger me-1 mb-2">Remove category</button>
+                        </form>
                         <a href="#" class="btn btn-outline-warning me-1 mb-2">Update category</a>
+                        <a href="{{ route('exercises.show', ['exercise' => $exercise->id]) }}" class="btn btn-outline-info me-1 mb-2">Show details</a>
                         <a href="{{ route('repetitions.create', ['exercise' => $exercise->id]) }}"
                            class="btn btn-outline-success me-1 mb-2">Add your entry</a>
                     </div>
