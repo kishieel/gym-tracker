@@ -51,6 +51,7 @@ jobs:
 
             $composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache --no-progress
             $php artisan migrate --force
+            $php artisan storage:link --force
             $php artisan optimize
             $php artisan queue:restart
 
