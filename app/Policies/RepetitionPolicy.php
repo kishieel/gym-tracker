@@ -32,7 +32,7 @@ class RepetitionPolicy
      */
     public function update(User $user, Repetition $repetition)
     {
-        return $repetition->user_id === $user->id;
+        return $repetition->user_id == $user->id;
     }
 
     /**
@@ -44,7 +44,7 @@ class RepetitionPolicy
      */
     public function delete(User $user, Repetition $repetition)
     {
-        return $repetition->user_id === $user->id;
+        return $repetition->user_id == $user->id;
     }
 
     /**
