@@ -49,7 +49,7 @@
                                 <td class="text-nowrap">{{ $repetition->first_name }}</td>
                                 <td class="text-nowrap">{{ $repetition->last_name }}</td>
                                 <td class="text-nowrap">{{ $repetition->quantity }} {{ $exercise->unit  }}</td>
-                                <td class="text-nowrap">{{ $repetition->workout_at->format('Y-m-d H:i') }}</td>
+                                <td class="text-nowrap">{{ $repetition->workout_at->format('d M Y H:i') }}</td>
                                 <td class="text-end text-nowrap py-1">
                                     @if(!$repetition->deleted_at)
                                         @can('delete', $repetition)

@@ -38,7 +38,7 @@
                                             {{ $participant->record }} {{ $exercise->unit  }}
                                         @endif
                                     </td>
-                                    <td>{{ $participant->last_workout_at->format('Y-m-d H:i') }}</td>
+                                    <td>{{ $participant->last_workout_at->format('d M Y H:i') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Exercise;
 use App\Models\Repetition;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -44,70 +43,4 @@ class DashboardController extends Controller
         return view('pages.dashboard')
             ->with('exercises', $exercises);
     }
-
-    // /**
-    //  * Show the form for creating a new exercise category.
-    //  *
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function create(): \Illuminate\Http\JsonResponse
-    // {
-    //     return response()->json([]);
-    // }
-    //
-    // /**
-    //  * Store a newly created exercise category in storage.
-    //  *
-    //  * @param \Illuminate\Http\Request $request
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function store(Request $request): \Illuminate\Http\JsonResponse
-    // {
-    //     return response()->json([]);
-    // }
-    //
-    // /**
-    //  * Display the exercise category ranking.
-    //  *
-    //  * @param int $id
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function show(Exercise $exercise): \Illuminate\Http\JsonResponse
-    // {
-    //     return response()->json([]);
-    // }
-    //
-    // /**
-    //  * Show the form for editing the specified exercise category.
-    //  *
-    //  * @param int $id
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function edit($id): \Illuminate\Http\JsonResponse
-    // {
-    //     return response()->json([]);
-    // }
-    //
-    // /**
-    //  * Update the specified exercise category in storage.
-    //  *
-    //  * @param \Illuminate\Http\Request $request
-    //  * @param int $id
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function update(Request $request, $id): \Illuminate\Http\JsonResponse
-    // {
-    //     return response()->json([]);
-    // }
-    //
-    // /**
-    //  * Remove the specified exercise category from storage.
-    //  *
-    //  * @param int $id
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function destroy(Exercise $exercise): \Illuminate\Http\JsonResponse
-    // {
-    //     return response()->json([]);
-    // }
 }

@@ -26,7 +26,11 @@
             </div>
             <form class="d-flex" action="{{ route('sign-out.action') }}" method="post">
                 @csrf
-                <a href="#" class="btn btn-outline-light me-2">Profile</a>
+                @if(url()->current() === route('dashboard.exercises'))
+                    <a href="{{ route('profile') }}" class="btn btn-outline-light me-2">Profile</a>
+                @else
+                    <a href="{{ route('dashboard.exercises') }}" class="btn btn-outline-light me-2">Dashboard</a>
+                @endif
                 <button class="btn btn-outline-light" type="submit">Sign out</button>
             </form>
         </div>
