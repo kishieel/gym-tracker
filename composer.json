@@ -1,7 +1,7 @@
 {
     "name": "kishieel/gym-tracker",
     "description": "The competitive gym tracker.",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "keywords": [
         "gym",
         "tracker",
@@ -38,6 +38,11 @@
         ],
         "mkcert:install": "mkcert -install",
         "mkcert:generate": "mkcert -cert-file .docker/etc/nginx/certs/localhost.crt -key-file .docker/etc/nginx/certs/localhost.key gym-tracker.localhost",
+        "release": "conventional-changelog --config .versionrc --commit",
+        "release:dry-run": "conventional-changelog --config .versionrc",
+        "release:patch": "conventional-changelog --patch --config .versionrc --commit",
+        "release:minor": "conventional-changelog --minor --config .versionrc --commit",
+        "release:major": "conventional-changelog --major --config .versionrc --commit",
         "scribe": "docker exec -it --user www-data core php artisan scribe:generate",
         "fix": "docker exec -it --user www-data core php-cs-fixer fix --config=.php-cs-fixer.php --verbose --ansi",
         "lint": "docker exec -it --user www-data core php-cs-fixer fix --config=.php-cs-fixer.php --verbose --ansi --dry-run",
@@ -75,6 +80,7 @@
         "friendsofphp/php-cs-fixer": "^3.4",
         "knuckleswtf/scribe": "^3.20",
         "laravel/sail": "^1.0.1",
+        "marcocesarato/php-conventional-changelog": "^1.13",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10"
