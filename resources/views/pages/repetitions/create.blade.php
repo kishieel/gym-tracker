@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                         <div class="form-floating mb-3">
-                            <input id="workout_at" type="text" name="workout_at" value="{{ old('workout_at') ?? now()->timezone('Europe/Warsaw')->format('Y-m-d H:i') }}" class="form-control text-light bg-dark @error('workout_at') is-invalid @enderror"
+                            <input id="workout_at" type="text" name="workout_at" value="{{ old('workout_at') ?? now()->timezone('Europe/Warsaw')->format('d M Y H:i') }}" class="form-control text-light bg-dark @error('workout_at') is-invalid @enderror"
                                    placeholder="Workout at"/>
                             <label for="workout_at">Workout at</label>
                             @error('workout_at')

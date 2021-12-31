@@ -9,10 +9,6 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * @group Authentication
- * @unathenticated
- */
 class SignInController
 {
     /**
@@ -22,7 +18,7 @@ class SignInController
      */
     public function view()
     {
-        return view('pages.sign-in');
+        return view('pages.auth.sign-in');
     }
 
     /**

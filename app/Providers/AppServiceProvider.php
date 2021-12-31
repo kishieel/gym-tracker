@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,5 +39,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Paginator::defaultView('components.pagination');
+        Password::defaults(fn () => Password::min(8)->mixedCase()->numbers()->symbols());
     }
 }

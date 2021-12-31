@@ -24,12 +24,17 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/sign-out', [\App\Http\Controllers\SignOutController::class, 'action'])->name('sign-out.action');
 
-    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'exercises']);
+    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'view'])
+        ->name('profile');
+
+    Route::post('/profile/change-password', [\App\Http\Controllers\ProfileController::class, 'changePassword'])
+        ->name('profile.change-password');
+
     Route::get('/dashboard/exercises', [\App\Http\Controllers\DashboardController::class, 'exercises'])
         ->name('dashboard.exercises');
 
     Route::resource('/exercises', \App\Http\Controllers\ExerciseController::class)
-        ->only('show', 'create', 'store', 'edit', 'update', 'destroy');
+        ->only('show', 'destroy');
 
     Route::resource('/exercises/{exercise}/repetitions', \App\Http\Controllers\RepetitionController::class)
         ->only('create', 'store', 'edit', 'update', 'destroy');

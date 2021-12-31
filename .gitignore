@@ -1,5 +1,6 @@
 /.idea
 /.vscode
+/.scribe
 /node_modules
 /vendor
 /public/hot
