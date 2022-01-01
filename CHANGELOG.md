@@ -4,6 +4,14 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.2.0](https://github.com/kishieel/gym-tracker-website/compare/v1.1.1...v1.2.0) (2022-01-01)
+### Features
+
+* Version tracking ([edbfb2](https://github.com/kishieel/gym-tracker-website/commit/edbfb2ec956e5031d906753f9ac3d73c64548d42))
+
+
+---
+
 ## [1.1.1](https://github.com/kishieel/gym-tracker-website/compare/v1.1.0...v1.1.1) (2022-01-01)
 ### Bug Fixes
 
