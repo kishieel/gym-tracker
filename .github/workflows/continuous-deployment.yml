@@ -38,11 +38,11 @@ jobs:
       - name: Set release version
         id: release-version
         run: |
-          echo "::set-output name=release-version::$(git describe --tags)"
+          echo "::set-output name=app-version::$(git describe --tags)"
       - name: Run deploy
         uses: appleboy/ssh-action@v0.1.1
         env:
-          RELEASE_VERSION: ${{ steps.release-version.outputs.release-version }}
+          APP_VERSION: ${{ steps.release-version.outputs.app-version }}
         with:
           username: ${{ secrets.SSH_USER }}
           host: ${{ secrets.SSH_HOST }}
