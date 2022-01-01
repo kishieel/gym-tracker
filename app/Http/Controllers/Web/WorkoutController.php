@@ -43,7 +43,8 @@ class WorkoutController extends Controller
         $workout->workout_at = $request->date('workout_at');
         $workout->save();
 
-        return redirect()->route('exercises.show', ['exercise' => $exercise->id]);
+        return redirect()->route('exercises.show', ['exercise' => $exercise])
+            ->with('status', trans('resources.workout.store'));
     }
 
     /**
@@ -63,16 +64,17 @@ class WorkoutController extends Controller
     /**
      * Update the specified workout in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param Exercise $exercise
-     * @param Workout $workout
+     * @param \App\Http\Requests\WorkoutRequest $request
+     * @param \App\Models\Exercise $exercise
+     * @param \App\Models\Workout $workout
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(WorkoutRequest $request, Exercise $exercise, Workout $workout)
     {
         $workout->update($request->validated());
 
-        return redirect()->route('exercises.show', ['exercise' => $exercise->id]);
+        return redirect()->route('workouts.edit', ['exercise' => $exercise, 'workout' => $workout])
+            ->with('status', trans('resources.workout.update'));
     }
 
     /**
@@ -86,7 +88,8 @@ class WorkoutController extends Controller
     {
         $workout->restore();
 
-        return redirect()->back()->withFragment('history');
+        return redirect()->back()->withFragment('history')
+            ->with('status', trans('resources.workout.restore'));
     }
 
     /**
@@ -100,6 +103,7 @@ class WorkoutController extends Controller
     {
         $workout->delete();
 
-        return redirect()->back()->withFragment('history');
+        return redirect()->back()->withFragment('history')
+            ->with('status', trans('resources.workout.destroy'));
     }
 }

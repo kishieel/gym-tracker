@@ -1,3 +1,10 @@
+@props([
+    'name',
+    'type' => 'text',
+    'value' => '',
+    'label' => '',
+])
+
 <div class="form-floating mb-3">
     <input id="{{ $name }}" type="{{ $type ?? 'text' }}" name="{{ $name }}"
            value="{{ $value ?? '' }}"
