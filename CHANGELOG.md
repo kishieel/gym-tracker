@@ -4,6 +4,19 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.1.0](https://github.com/kishieel/gym-tracker-website/compare/v1.0.0...v1.1.0) (2022-01-01)
+### Features
+
+* Exercise create form ([cfb666](https://github.com/kishieel/gym-tracker-website/commit/cfb666a067a80d49035a0ce4711154eb267df0c5))
+* Exercise update form ([677c85](https://github.com/kishieel/gym-tracker-website/commit/677c852985a3926d637e78dfd3fdc0fdac41dddc))
+
+### Code Refactoring
+
+* Implement blade components on all pages ([2e7630](https://github.com/kishieel/gym-tracker-website/commit/2e76301bf7f4cfc038ed1d832f459c98719e9a58))
+
+
+---
+
 ## [1.0.0](https://github.com/kishieel/gym-tracker-website/compare/2b95130ea37b42fb30c7e3aa1c35de1c40c4b7c6...v1.0.0) (2021-12-31)
 ### Features
 
