@@ -45,6 +45,12 @@ class DashboardController extends Controller
             ->where('label', 'like', '%' . $filter . '%')
             ->when(auth()->user()->is_admin, fn ($query) => $query->withTrashed())
             ->when($onlyMyExercises, fn ($query) => $query->where('created_by', auth()->id()))
+            ->orderByDesc(
+                Workout::query()
+                    ->selectRaw('max(workouts.workout_at)')
+                    ->whereColumn('workouts.exercise_id', 'exercises.id')
+            )
+            ->orderByDesc('updated_at')
             ->get();
 
         return view('pages.dashboard')

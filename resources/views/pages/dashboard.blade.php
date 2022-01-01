@@ -22,7 +22,7 @@
                         </button>
                     </x-form>
                     <div class="nav-link py-0">
-                        <div class="btn btn-outline-light">Create new exercise</div>
+                        <a class="btn btn-outline-light" href="{{ route('exercises.create') }}">Create new exercise</a>
                     </div>
                 </div>
                 <x-form class="d-flex">

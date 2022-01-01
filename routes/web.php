@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('dashboard.exercises');
 
     Route::resource('/exercises', \App\Http\Controllers\Web\ExerciseController::class)
-        ->only('show', 'edit', 'update', 'destroy');
+        ->only('create', 'store', 'show', 'edit', 'update', 'destroy');
 
     Route::patch('/exercises/{exercise}/restore', [\App\Http\Controllers\Web\ExerciseController::class, 'restore'])
         ->name('exercises.restore');

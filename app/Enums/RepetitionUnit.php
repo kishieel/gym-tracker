@@ -7,14 +7,15 @@ namespace App\Enums;
 use BenSampo\Enum\Enum;
 
 /**
- * @method static static Workouts()
+ * @method static static Repetitions()
  * @method static static Kilograms()
  * @method static static Seconds()
  * @method static static Minutes()
+ * @method static static Workouts()
  */
 final class RepetitionUnit extends Enum
 {
-    const Workouts = 'reps';
+    const Repetitions = 'reps';
     const Kilograms = 'kg';
     const Seconds = 's';
     const Minutes = 'm';

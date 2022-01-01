@@ -19,9 +19,9 @@
                     {{  session('status') }}
                 </x-alert.success>
             @endif
-            <x-card.form method="put"
+            <x-form method="put"
                          action="{{ route('exercises.update', ['exercise' => $exercise]) }}">
-                <x-slot name="inputs">
+                <div class="mt-4 mb-5">
                     <x-form.input name="label" value="{{ old('label', $exercise->label) }}" label="Label"/>
                     <x-form.select name="type" label="Ranking type">
                         <option disabled>Select exercise ranking type</option>
@@ -39,13 +39,13 @@
                             </option>
                         @endforeach
                     </x-form.select>
-                </x-slot>
-                <x-slot name="buttons">
+                </div>
+                <div class="text-end">
                     <a href="{{ route('exercises.show', ['exercise' => $exercise]) }}"
                        class="btn btn-outline-danger me-1 mb-2">Cancel</a>
-                    <button type="submit" class="btn btn-outline-success me-1 mb-2">Update</button>
-                </x-slot>
-            </x-card.form>
+                    <button type="submit" class="btn btn-outline-success me-1 mb-2">Update exercise</button>
+                </div>
+            </x-form>
         </x-card>
     </div>
 @endsection

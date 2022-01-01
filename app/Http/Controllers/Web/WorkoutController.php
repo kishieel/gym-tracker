@@ -30,7 +30,8 @@ class WorkoutController extends Controller
     /**
      * Store a newly created workout in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\WorkoutRequest $request
+     * @param \App\Models\Exercise $exercise
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(WorkoutRequest $request, Exercise $exercise)

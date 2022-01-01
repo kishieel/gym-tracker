@@ -8,7 +8,6 @@ use App\Enums\ExerciseType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExerciseRequest;
 use App\Models\Exercise;
-use App\Models\Workout;
 
 class ExerciseController extends Controller
 {
@@ -49,9 +48,38 @@ class ExerciseController extends Controller
     }
 
     /**
+     * Show the form for creating a new workout.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function create()
+    {
+        return view('pages.exercises.create');
+    }
+
+    /**
+     * Store a newly created workout in storage.
+     *
+     * @param \App\Http\Requests\ExerciseRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ExerciseRequest $request)
+    {
+        $exercise = new Exercise();
+
+        $exercise->label = $request->input('label');
+        $exercise->type = $request->input('type');
+        $exercise->unit = $request->input('unit');
+        $exercise->created_by = auth()->id();
+        $exercise->save();
+
+        return redirect()->route('exercises.show', ['exercise' => $exercise]);
+    }
+
+    /**
      * Show the form for editing the specified exercise.
      *
-     * @param Exercise $exercise
+     * @param \App\Models\Exercise $exercise
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Exercise $exercise)
@@ -63,21 +91,21 @@ class ExerciseController extends Controller
     /**
      * Update the specified exercise in storage.
      *
-     * @param ExerciseRequest $request
-     * @param Exercise $exercise
+     * @param \App\Http\Requests\ExerciseRequest $request
+     * @param \App\Models\Exercise $exercise
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ExerciseRequest $request, Exercise $exercise)
     {
         $exercise->update($request->validated());
 
-        return back()->with('status', trans('resources.exercise.update'));
+        return redirect()->back()->with('status', trans('resources.exercise.update'));
     }
 
     /**
      * Restore the specified workout to storage.
      *
-     * @param Exercise $exercise
+     * @param \App\Models\Exercise $exercise
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Exercise $exercise)
@@ -90,7 +118,7 @@ class ExerciseController extends Controller
     /**
      * Remove the specified exercise from storage.
      *
-     * @param Exercise $exercise
+     * @param \App\Models\Exercise $exercise
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Exercise $exercise)
