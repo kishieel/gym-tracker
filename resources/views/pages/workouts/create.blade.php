@@ -2,16 +2,20 @@
 
 @section('content')
     <div class="container">
-        @include('components.navigation', ['breadcrumbs' => [
-            route('dashboard.exercises') => 'Dashboard',
-            route('exercises.show', ['exercise' => $exercise->id]) => $exercise->label,
-            'Add your entry'
-        ]])
+        <x-navigation>
+            <x-navigation.breadcrumb url="{{ route('dashboard.exercises') }}">
+                Dashboard
+            </x-navigation.breadcrumb>
+            <x-navigation.breadcrumb url="{{ route('exercises.show', ['exercise' => $exercise]) }}">
+                {{ $exercise->label }}
+            </x-navigation.breadcrumb>
+            <x-navigation.breadcrumb>Add your workout</x-navigation.breadcrumb>
+        </x-navigation>
         <div class="card text-white bg-dark mb-4 bg-opacity-75">
             <div class="card-body pb-2">
                 <h5 class="card-title">{{ $exercise->label }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ ucfirst($exercise->type) }}</h6>
-                <form method="post" action="{{ route('repetitions.store', ['exercise' => $exercise->id]) }}">
+                <form method="post" action="{{ route('workouts.store', ['exercise' => $exercise->id]) }}">
                     @csrf
                     <input type="hidden" name="exercise_id" value="{{ $exercise->id }}"/>
                     <div class="mt-4 mb-5">
@@ -33,8 +37,8 @@
                         </div>
                     </div>
                     <div class="text-end">
-                        <a href="{{route('exercises.show', ['exercise' => $exercise->id])}}" class="btn btn-outline-danger me-1 mb-2">Cancel</a>
-                        <button type="submit" class="btn btn-outline-success me-1 mb-2">Add your entry</button>
+                        <a href="{{ route('exercises.show', ['exercise' => $exercise]) }}" class="btn btn-outline-danger me-1 mb-2">Cancel</a>
+                        <button type="submit" class="btn btn-outline-success me-1 mb-2">Add your workout</button>
                     </div>
                 </form>
             </div>

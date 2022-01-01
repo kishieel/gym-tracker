@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepetitionsTable extends Migration
+class CreateWorkoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateRepetitionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('repetitions', function (Blueprint $table) {
+        Schema::create('workouts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('exercise_id');
@@ -24,13 +24,13 @@ class CreateRepetitionsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('exercise_id', 'fk_repetitions_exercises')
+            $table->foreign('exercise_id', 'workouts_exercise_id_foreign')
                 ->references('id')
                 ->on('exercises')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->foreign('user_id', 'fk_repetitions_users')
+            $table->foreign('user_id', 'workouts_user_id_foreign')
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete()
@@ -45,6 +45,6 @@ class CreateRepetitionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('repetitions');
+        Schema::dropIfExists('workouts');
     }
 }

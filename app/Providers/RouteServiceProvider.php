@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\Exercise;
-use App\Models\Repetition;
 use App\Models\User;
+use App\Models\Workout;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -72,6 +72,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::bind('user', fn ($id) => User::withTrashed()->findOrFail($id));
         Route::bind('exercise', fn ($id) => Exercise::withTrashed()->findOrFail($id));
-        Route::bind('repetition', fn ($id) => Repetition::withTrashed()->findOrFail($id));
+        Route::bind('workout', fn ($id) => Workout::withTrashed()->findOrFail($id));
     }
 }

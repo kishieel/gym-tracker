@@ -61,7 +61,7 @@
         "publish:static": "docker exec -it --user www-data core php artisan vendor:publish --tag=statics --force",
         "populate:user": "docker exec -it --user www-data core php artisan populate:user",
         "populate:exercise": "docker exec -it --user www-data core php artisan populate:exercise",
-        "populate:repetition": "docker exec -it --user www-data core php artisan populate:repetition"
+        "populate:workout": "docker exec -it --user www-data core php artisan populate:workout"
     },
     "require": {
         "php": "^8.0",

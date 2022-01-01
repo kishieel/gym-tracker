@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Models\Exercise;
-use App\Models\Repetition;
 use App\Models\User;
+use App\Models\Workout;
 use Illuminate\Console\Command;
 
-class RepetitionPopulateCommand extends Command
+class WorkoutPopulateCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'populate:repetition';
+    protected $signature = 'populate:workout';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Allows to create exercise repetition from CLI.';
+    protected $description = 'Allows to create exercise workout from CLI.';
 
     /**
      * Execute the console command.
@@ -32,7 +32,7 @@ class RepetitionPopulateCommand extends Command
      */
     public function handle(): int
     {
-        $repetition = new Repetition();
+        $workout = new Workout();
 
         $userId = $this->askUser();
         if (! $userId) {
@@ -41,7 +41,7 @@ class RepetitionPopulateCommand extends Command
             return 1;
         }
 
-        $repetition->user_id = $userId;
+        $workout->user_id = $userId;
 
         $exerciseId = $this->askExercise();
         if (! $exerciseId) {
@@ -50,12 +50,12 @@ class RepetitionPopulateCommand extends Command
             return 1;
         }
 
-        $repetition->exercise_id = $exerciseId;
+        $workout->exercise_id = $exerciseId;
 
-        $repetition->quantity = $this->ask('Quantity');
-        $repetition->save();
+        $workout->quantity = $this->ask('Quantity');
+        $workout->save();
 
-        $this->info('Repetition created successfully!');
+        $this->info('Workout created successfully!');
 
         return 0;
     }
