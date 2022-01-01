@@ -39,6 +39,7 @@ jobs:
         id: release-version
         run: |
           echo "::set-output name=app-version::$(git describe --tags)"
+          echo $(git describe --tags)
       - name: Run deploy
         uses: appleboy/ssh-action@v0.1.1
         env:
