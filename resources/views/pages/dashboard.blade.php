@@ -7,6 +7,31 @@
                 Dashboard
             </x-navigation.breadcrumb>
         </x-navigation>
+        <nav class="navbar navbar-expand-md  navbar-dark bg-dark mb-4 bg-opacity-75 rounded py-3">
+            <div class="container-fluid">
+                <div class="navbar-nav">
+                    <x-form class="nav-link py-0">
+                        <input type="hidden" name="my-exercises"
+                               value="{{ ! request()->boolean('my-exercises') }}"/>
+                        <button type="submit" class="btn btn-outline-light">
+                            @if(request()->boolean('my-exercises'))
+                                All exercises
+                            @else
+                                Only my exercises
+                            @endif
+                        </button>
+                    </x-form>
+                    <div class="nav-link py-0">
+                        <div class="btn btn-outline-light">Create new exercise</div>
+                    </div>
+                </div>
+                <x-form class="d-flex">
+                    <input class="form-control me-2" type="search" name="filter" placeholder="Search exercise"
+                           value="{{ request()->get('filter')  }}" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </x-form>
+            </div>
+        </nav>
         @foreach ($exercises as $exercise)
             <x-card :disabled="$exercise->trashed()">
                 <x-slot name="title">{{ $exercise->label }}</x-slot>

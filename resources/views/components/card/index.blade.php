@@ -1,7 +1,10 @@
-@props(['disabled' => false])
+@props([
+    'disabled' => false,
+    'cardBodyClass' => '',
+])
 
 <div {{ $attributes }} class="card bg-dark mb-4 bg-opacity-75 @if($disabled) text-secondary @else text-light @endif">
-    <div class="card-body pb-2">
+    <div class="card-body pb-2 {{ $cardBodyClass }}">
         @isset($title)
             <h5 class="card-title">
                 {{ $title ?? '' }}

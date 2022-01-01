@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Exercise;
 use App\Models\Workout;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -15,8 +16,11 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function exercises()
+    public function exercises(Request $request)
     {
+        $filter = $request->input('filter', '');
+        $onlyMyExercises = $request->boolean('my-exercises', false);
+
         $exercises = Exercise::query()
             ->with(
                 'participants',
@@ -38,8 +42,9 @@ class DashboardController extends Controller
                         'last_workout_at' => 'datetime',
                     ])
             )
+            ->where('label', 'like', '%' . $filter . '%')
             ->when(auth()->user()->is_admin, fn ($query) => $query->withTrashed())
-            // ->select(['id', 'label', 'type', 'unit'])
+            ->when($onlyMyExercises, fn ($query) => $query->where('created_by', auth()->id()))
             ->get();
 
         return view('pages.dashboard')

@@ -1,5 +1,12 @@
+@props([
+    'method' => 'get',
+    'action' => '',
+])
+
 <form method="{{ strtolower($method) == 'get' ? 'get' : 'post' }}" action="{{ $action }}" {{ $attributes }}>
-    @method($method)
-    @csrf
+    @if(strtolower($method) !== 'get')
+        @method($method)
+        @csrf
+    @endif
     {{ $slot }}
 </form>

@@ -13,8 +13,7 @@
                     </div>
                 </div>
                 <div class="modal-body px-4 py-4">
-                    <form class="px-2" method="post" action="{{ route('sign-in.action') }}">
-                        @csrf
+                    <x-form class="px-2" method="post" action="{{ route('sign-in.action') }}">
                         <div class="input-group input-group-lg mb-3 has-validation">
                             <span class="input-group-text bg-light">
                                 <i class="fas fa-user"></i>
@@ -48,7 +47,7 @@
                         <div class="text-center">
                             <button type="submit" class="btn btn-lg btn-dark w-100">Sign in</button>
                         </div>
-                    </form>
+                    </x-form>
                 </div>
                 <div class="modal-footer justify-content-center bg-light px-5 py-3">
                     <a href="#" class="link-secondary btn disabled py-0">Forgot password?</a>
