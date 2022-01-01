@@ -11,6 +11,7 @@ use BenSampo\Enum\Enum;
  * @method static static Kilograms()
  * @method static static Seconds()
  * @method static static Minutes()
+ * @method static static Workouts()
  */
 final class RepetitionUnit extends Enum
 {

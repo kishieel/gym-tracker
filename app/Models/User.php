@@ -27,10 +27,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Repetition[] $repetitions
- * @property-read int|null $repetitions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workout[] $workouts
+ * @property-read int|null $workouts_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -93,8 +93,8 @@ class User extends Authenticatable
         'verified_at' => 'datetime',
     ];
 
-    public function repetitions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function workouts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Repetition::class);
+        return $this->hasMany(Workout::class);
     }
 }

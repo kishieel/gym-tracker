@@ -15,18 +15,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $label
  * @property string $type
  * @property string $unit
+ * @property int|null $created_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $participants
  * @property-read int|null $participants_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Repetition[] $repetitions
- * @property-read int|null $repetitions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workout[] $workouts
+ * @property-read int|null $workouts_count
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise newQuery()
  * @method static \Illuminate\Database\Query\Builder|Exercise onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise query()
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exercise whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Exercise whereLabel($value)
@@ -47,15 +49,16 @@ class Exercise extends Model
     protected $fillable = [
         'label',
         'type',
+        'unit',
     ];
 
-    public function repetitions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function workouts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Repetition::class);
+        return $this->hasMany(Workout::class);
     }
 
     public function participants(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'repetitions');
+        return $this->belongsToMany(User::class, 'workouts');
     }
 }

@@ -2,21 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SignOutController
+class SignOutController extends Controller
 {
     /**
      * Destroy authenticated user session or token.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function action(Request $request): \Illuminate\Http\RedirectResponse
+    public function action(): \Illuminate\Http\RedirectResponse
     {
         Auth::logout();
 

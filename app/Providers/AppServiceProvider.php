@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Laravel\Sanctum\Sanctum;
@@ -40,5 +41,7 @@ class AppServiceProvider extends ServiceProvider
 
         Paginator::defaultView('components.pagination');
         Password::defaults(fn () => Password::min(8)->mixedCase()->numbers()->symbols());
+
+        Blade::if('deleted', fn ($value) => $value->deleted_at ?? false);
     }
 }

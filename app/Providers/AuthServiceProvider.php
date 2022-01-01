@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Models\Repetition;
-use App\Models\User;
-use App\Policies\RepetitionPolicy;
+use App\Models\Exercise;
+use App\Models\Workout;
+use App\Policies\ExercisePolicy;
+use App\Policies\WorkoutPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -18,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        Repetition::class => RepetitionPolicy::class,
+        Workout::class => WorkoutPolicy::class,
+        Exercise::class => ExercisePolicy::class,
     ];
 
     /**
@@ -29,11 +30,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Gate::before(function (User $user) {
-            if ($user->is_admin) {
-                return true;
-            }
-        });
     }
 }
