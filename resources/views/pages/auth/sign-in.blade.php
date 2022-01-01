@@ -55,4 +55,5 @@
             </div>
         </div>
     </div>
+    <div class="position-absolute bottom-0 start-0 end-0 m-auto mb-5 text-center text-light opacity-25">— {{ config('app.version') }} —</div>
 @endsection

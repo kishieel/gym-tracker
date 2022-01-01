@@ -35,8 +35,14 @@ jobs:
             --exclude-from=.rsyncignore \
             -e "ssh -p ${{ secrets.SSH_PORT }} -i key.rsa -o StrictHostKeyChecking=no" \
             . "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET }}"
+      - name: Set release version
+        id: release-version
+        run: |
+          echo "::set-output name=release-version::$(git describe)"
       - name: Run deploy
         uses: appleboy/ssh-action@v0.1.1
+        env:
+          RELEASE_VERSION: ${{ steps.release-version.outputs.release-version }}
         with:
           username: ${{ secrets.SSH_USER }}
           host: ${{ secrets.SSH_HOST }}
@@ -48,6 +54,7 @@ jobs:
 
             cd ${{ secrets.SSH_TARGET }}
             echo "${{ secrets.ENV }}" > .env
+            echo APP_VERSION=$APP_VERSION >> .env
 
             $composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache --no-progress
             $php artisan migrate --force
