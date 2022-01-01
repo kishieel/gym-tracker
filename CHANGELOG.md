@@ -4,6 +4,10 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.2.7](https://github.com/kishieel/gym-tracker-website/compare/v1.2.6...v1.2.7) (2022-01-01)
+
+---
+
 ## [1.2.5](https://github.com/kishieel/gym-tracker-website/compare/v1.2.4...v1.2.5) (2022-01-01)
 
 ---
