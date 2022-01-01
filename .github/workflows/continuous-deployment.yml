@@ -48,6 +48,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
+          envs: APP_VERSION
           script: |
             php="$HOME/bin/php"
             composer="$php $HOME/bin/composer"
