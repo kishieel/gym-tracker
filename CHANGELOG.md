@@ -4,6 +4,18 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.2.8](https://github.com/kishieel/gym-tracker-website/compare/v1.2.7...v1.2.8) (2022-01-01)
+### Bug Fixes
+
+* Workout edit form ([522b99](https://github.com/kishieel/gym-tracker-website/commit/522b995818fef8cc426ac9a2eb688e5f8269e311))
+
+### Tests
+
+* Git descibe ([3b0511](https://github.com/kishieel/gym-tracker-website/commit/3b0511d64ae9ac62277b7c951d72b9879fcfea42))
+
+
+---
+
 ## [1.2.7](https://github.com/kishieel/gym-tracker-website/compare/v1.2.6...v1.2.7) (2022-01-01)
 
 ---
