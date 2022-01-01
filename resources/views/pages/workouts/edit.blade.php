@@ -14,8 +14,12 @@
         <x-card>
             <x-slot name="title">{{ $exercise->label }}</x-slot>
             <x-slot name="subtitle">{{ ucfirst($exercise->type) }}</x-slot>
+            @if(session('status'))
+                <x-alert.success dismissible>{{ session('status') }}</x-alert.success>
+            @endif
             <x-form method="put" action="{{ route('workouts.update', ['exercise' => $exercise, 'workout' => $workout]) }}">
                 <div class="mt-4 mb-5">
+                    <x-form.input name="exercise_id" type="hidden" value="{{ $exercise->id }}"/>
                     <x-form.input name="quantity" value="{{ old('quantity', $workout->quantity) }}" label="Quantity ({{ $exercise->unit }})"/>
                     <x-form.input name="workout_at" value="{{ old('workout_at', $workout->workout_at) }}" label="Workout at"/>
                 </div>

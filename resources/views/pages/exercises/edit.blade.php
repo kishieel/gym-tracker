@@ -7,7 +7,7 @@
                 Dashboard
             </x-navigation.breadcrumb>
             <x-navigation.breadcrumb url="{{ route('exercises.show', ['exercise' => $exercise]) }}">
-                Push ups
+                {{ $exercise->label  }}
             </x-navigation.breadcrumb>
             <x-navigation.breadcrumb>Update exercises</x-navigation.breadcrumb>
         </x-navigation>

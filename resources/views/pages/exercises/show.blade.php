@@ -35,6 +35,9 @@
             @aware(['disabled' => false])
             <x-slot name="title">{{ $exercise->label }}</x-slot>
             <x-slot name="subtitle">History</x-slot>
+            @if(session('status'))
+                <x-alert.success dismissible>{{ session('status') }}</x-alert.success>
+            @endif
             <div class="table-responsive-md my-4">
                 <table class="table table-dark table-hover m-0 @if($disabled) text-secondary @endif">
                     <thead>

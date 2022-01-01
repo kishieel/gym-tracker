@@ -73,7 +73,8 @@ class ExerciseController extends Controller
         $exercise->created_by = auth()->id();
         $exercise->save();
 
-        return redirect()->route('exercises.show', ['exercise' => $exercise]);
+        return redirect()->route('exercises.show', ['exercise' => $exercise])
+            ->with('status', trans('resources.exercise.store'));
     }
 
     /**
@@ -99,7 +100,8 @@ class ExerciseController extends Controller
     {
         $exercise->update($request->validated());
 
-        return redirect()->back()->with('status', trans('resources.exercise.update'));
+        return redirect()->back()
+            ->with('status', trans('resources.exercise.update'));
     }
 
     /**
@@ -112,7 +114,8 @@ class ExerciseController extends Controller
     {
         $exercise->restore();
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with('status', trans('resources.exercise.restore'));
     }
 
     /**
@@ -125,6 +128,7 @@ class ExerciseController extends Controller
     {
         $exercise->delete();
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with('status', trans('resources.exercise.delete'));
     }
 }
