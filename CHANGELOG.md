@@ -6,9 +6,15 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.10](https://github.com/kishieel/gym-tracker-website/compare/v1.2.9...v1.2.10) (2022-01-02)
 
+### Tests
+* Dealing with 'php conventional commit' package
+
 ---
 
 ## [1.2.9](https://github.com/kishieel/gym-tracker-website/compare/v1.2.8...v1.2.9) (2022-01-02)
+
+### Tests
+* Dealing with 'php conventional commit' package
 
 ---
 
@@ -26,25 +32,43 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.7](https://github.com/kishieel/gym-tracker-website/compare/v1.2.6...v1.2.7) (2022-01-01)
 
+### Tests
+* Dealing with 'php conventional commit' package
+
 ---
 
 ## [1.2.5](https://github.com/kishieel/gym-tracker-website/compare/v1.2.4...v1.2.5) (2022-01-01)
+
+### Tests
+* Dealing with 'php conventional commit' package
 
 ---
 
 ## [1.2.4](https://github.com/kishieel/gym-tracker-website/compare/v1.2.3...v1.2.4) (2022-01-01)
 
+### Tests
+* Dealing with 'php conventional commit' package
+
 ---
 
 ## [1.2.3](https://github.com/kishieel/gym-tracker-website/compare/v1.2.2...v1.2.3) (2022-01-01)
+
+### Tests
+* Dealing with 'php conventional commit' package
 
 ---
 
 ## [1.2.2](https://github.com/kishieel/gym-tracker-website/compare/v1.2.1...v1.2.2) (2022-01-01)
 
+### Tests
+* Dealing with 'php conventional commit' package
+
 ---
 
 ## [1.2.1](https://github.com/kishieel/gym-tracker-website/compare/v1.2.0...v1.2.1) (2022-01-01)
+
+### Tests
+* Dealing with 'php conventional commit' package
 
 ---
 

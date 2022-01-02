@@ -11,8 +11,12 @@
     <meta property="og:type" content="website"/>
     <meta property="og:description" content="The competitive gym tracker."/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="theme-color" content="#fff"/>
+
+    @auth
+        <meta name="vapid-public-key" content="{{ config('webpush.vapid.public_key') }}"/>
+    @endauth
 
     <link rel="icon" type="image/png" sizes="160x160" href="{{ secure_asset('static/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -55,5 +59,8 @@
         </symbol>
     </svg>
     @yield('content')
+    @auth
+        <script src="{{ secure_asset('js/register-service-workers.min.js') }}" defer></script>
+    @endauth
 </body>
 </html>

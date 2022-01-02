@@ -24,6 +24,12 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/sign-out', [\App\Http\Controllers\Auth\SignOutController::class, 'action'])->name('sign-out.action');
 
+    Route::post('/web-push/subscribe', [\App\Http\Controllers\Web\WebPushController::class, 'subscribe'])
+        ->name('web-push.subscribe');
+
+    Route::post('/web-push/unsubscribe', [\App\Http\Controllers\Web\WebPushController::class, 'unsubscribe'])
+        ->name('web-push.unsubscribe');
+
     Route::get('/profile', [\App\Http\Controllers\Web\ProfileController::class, 'view'])
         ->name('profile');
 

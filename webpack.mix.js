@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,3 +12,16 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+    resolve: {
+        extensions: ["*", ".ts"],
+        alias: {
+            "@src": path.join(__dirname, "resources/js/"),
+        }
+    },
+})
+
+mix.ts('resources/js/register-service-workers.ts', 'public/js')
+    .ts('resources/js/web-push-service-worker.ts', 'public/js')
+    .minify('public/js/register-service-workers.js', 'public/js/register-service-workers.min.js')
+    .minify('public/js/web-push-service-worker.js', 'public/js/web-push-service-worker.min.js');
