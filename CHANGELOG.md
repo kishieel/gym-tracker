@@ -4,6 +4,14 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.3.2](https://github.com/kishieel/gym-tracker-website/compare/v1.3.1...v1.3.2) (2022-01-02)
+### Bug Fixes
+
+* Broken record notification ([c2fae3](https://github.com/kishieel/gym-tracker-website/commit/c2fae3f1d40a450fd0cfca0f7f7452a3855e3bc8))
+
+
+---
+
 ## [1.3.1](https://github.com/kishieel/gym-tracker-website/compare/v1.3.0...v1.3.1) (2022-01-02)
 ### Bug Fixes
 
