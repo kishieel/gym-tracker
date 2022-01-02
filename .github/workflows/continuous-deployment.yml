@@ -63,7 +63,7 @@ jobs:
             echo APP_VERSION=$APP_VERSION >> .env
 
             $composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-cache --no-progress
-            $php artisan cache:clean
+            $php artisan cache:clear
             $php artisan migrate --force
             $php artisan storage:link --force
             $php artisan optimize
