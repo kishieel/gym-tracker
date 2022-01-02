@@ -108,6 +108,7 @@ class InvalidateRanking implements ShouldQueue
             ->join('workouts', 'workouts.user_id', '=', 'users.id')
             ->where('exercise_id', $this->exercise->id)
             ->where('user_id', '!=', $this->champion->id)
+            ->whereNull('workouts.deleted_at')
             ->groupBy('user_id', 'exercise_id')
             ->selectRaw('users.*');
 

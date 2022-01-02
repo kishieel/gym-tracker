@@ -47,7 +47,7 @@ class BrokenRecordNotification extends Notification
     public function toWebPush($notifiable, $notification)
     {
         return (new WebPushMessage())
-            ->icon('/static/favicon.ico')
+            ->icon('/static/logo.png')
             ->data(['url' => config('app.url')])
             ->title(trans('Your record has been broken!'))
             ->body(trans('Your record at :exercise has been broken by :user, who set a new personal record of :record.', [
