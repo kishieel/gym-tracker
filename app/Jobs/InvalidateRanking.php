@@ -93,8 +93,8 @@ class InvalidateRanking implements ShouldQueue
             $currentRecord = $this->currentQuantity;
         }
 
-        $this->previousRecord = $previousRecord;
-        $this->currentRecord = $currentRecord;
+        $this->previousRecord = (float) $previousRecord;
+        $this->currentRecord = (float) $currentRecord;
     }
 
     /**
