@@ -22,6 +22,7 @@
             "docker exec -it --user www-data core composer install",
             "docker exec -it --user www-data core php artisan key:generate --ansi",
             "docker exec -it --user www-data core php artisan storage:link",
+            "docker exec -it --user www-data core php artisan webpush:vapid",
             "@up"
         ],
         "up": "docker-compose up -d",
@@ -68,6 +69,7 @@
         "bensampo/laravel-enum": "^4.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel-notification-channels/webpush": "^5.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5"

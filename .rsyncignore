@@ -1,11 +1,16 @@
 /.docker
 /.github
+/node_modules
 /tests
 
 .editorconfig
 .gitignore
 .php-cs-fixer.php
 .rsyncignore
+
+tsconfig.js
+package.json
+yarn.lock
 
 docker-composer.yml
 Dockerfile.yml

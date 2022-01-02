@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkoutRequest;
+use App\Jobs\InvalidateRanking;
 use App\Models\Exercise;
 use App\Models\Workout;
 
@@ -36,8 +37,12 @@ class WorkoutController extends Controller
      */
     public function store(WorkoutRequest $request, Exercise $exercise)
     {
+        $user = auth()->user();
+        $gain = $request->input('quantity');
+        InvalidateRanking::dispatchSync($user, $exercise, $gain);
+
         $workout = new Workout();
-        $workout->user_id = auth()->user()->getAuthIdentifier();
+        $workout->user_id = auth()->id();
         $workout->exercise_id = $exercise->id;
         $workout->quantity = $request->input('quantity');
         $workout->workout_at = $request->date('workout_at');
@@ -71,6 +76,10 @@ class WorkoutController extends Controller
      */
     public function update(WorkoutRequest $request, Exercise $exercise, Workout $workout)
     {
+        $user = auth()->user();
+        $gain = $request->input('quantity') - $workout->quantity;
+        InvalidateRanking::dispatchSync($user, $exercise, $gain);
+
         $workout->update($request->validated());
 
         return redirect()->route('workouts.edit', ['exercise' => $exercise, 'workout' => $workout])
