@@ -38,8 +38,8 @@ class WorkoutController extends Controller
     public function store(WorkoutRequest $request, Exercise $exercise)
     {
         $user = auth()->user();
-        $gain = $request->input('quantity');
-        InvalidateRanking::dispatchSync($user, $exercise, $gain);
+        $quantity = $request->input('quantity');
+        InvalidateRanking::dispatchSync($user, $exercise, $quantity);
 
         $workout = new Workout();
         $workout->user_id = auth()->id();
@@ -77,8 +77,9 @@ class WorkoutController extends Controller
     public function update(WorkoutRequest $request, Exercise $exercise, Workout $workout)
     {
         $user = auth()->user();
-        $gain = $request->input('quantity') - $workout->quantity;
-        InvalidateRanking::dispatchSync($user, $exercise, $gain);
+        $newQuantity = $request->input('quantity');
+        $oldQuantity = $workout->quantity;
+        InvalidateRanking::dispatchSync($user, $exercise, $newQuantity, $oldQuantity);
 
         $workout->update($request->validated());
 

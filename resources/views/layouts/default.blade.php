@@ -12,7 +12,8 @@
     <meta property="og:description" content="The competitive gym tracker."/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="theme-color" content="#fff"/>
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"/>
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black"/>
 
     @auth
         <meta name="vapid-public-key" content="{{ config('webpush.vapid.public_key') }}"/>
