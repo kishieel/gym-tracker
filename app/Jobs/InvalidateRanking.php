@@ -72,7 +72,8 @@ class InvalidateRanking implements ShouldQueue
             $this->losers,
             $this->exercise->label . ' (' . ucfirst($this->exercise->type) . ')',
             $this->champion->full_name,
-            $this->currentRecord . ' ' . $this->exercise->unit
+            $this->currentRecord . ' ' . $this->exercise->unit,
+            route('exercises.show', ['exercise' => $this->exercise])
         );
     }
 
@@ -124,16 +125,18 @@ class InvalidateRanking implements ShouldQueue
      * @param string $exercise
      * @param string $champion
      * @param string $record
+     * @param string $url
      * @return void
      */
-    protected function sendNotification(Collection $losers, string $exercise, string $champion, string $record): void
+    protected function sendNotification(Collection $losers, string $exercise, string $champion, string $record, string $url): void
     {
         Notification::send(
             $losers,
             new BrokenRecordNotification(
                 $exercise,
                 $champion,
-                $record
+                $record,
+                $url
             )
         );
     }

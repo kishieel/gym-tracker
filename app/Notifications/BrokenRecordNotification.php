@@ -22,11 +22,15 @@ class BrokenRecordNotification extends Notification
     /** @var string */
     private string $record;
 
-    public function __construct(string $exercise, string $champion, string $record)
+    /** @var string */
+    private string $url;
+
+    public function __construct(string $exercise, string $champion, string $record, $url = null)
     {
         $this->exercise = $exercise;
         $this->champion = $champion;
         $this->record = $record;
+        $this->url = $url ?? config('app.url');
     }
 
     /**
@@ -48,7 +52,7 @@ class BrokenRecordNotification extends Notification
     {
         return (new WebPushMessage())
             ->icon('/static/logo.png')
-            ->data(['url' => config('app.url')])
+            ->data(['url' => $this->url])
             ->title(trans('Your record has been broken!'))
             ->body(trans('Your record at :exercise has been broken by :user, who set a new personal record of :record.', [
                 'exercise' => $this->exercise,
