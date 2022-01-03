@@ -4,6 +4,14 @@
 All notable changes to this project will be documented in this file.
 <!--- END HEADER -->
 
+## [1.3.5](https://github.com/kishieel/gym-tracker-website/compare/v1.3.4...v1.3.5) (2022-01-03)
+### Bug Fixes
+
+* Redirect when notification click, remove theme-color ([ae921a](https://github.com/kishieel/gym-tracker-website/commit/ae921a88e7f075e8b7db04d15abed802f581dee6))
+
+
+---
+
 ## [1.3.4](https://github.com/kishieel/gym-tracker-website/compare/v1.3.3...v1.3.4) (2022-01-02)
 ### Bug Fixes
 
